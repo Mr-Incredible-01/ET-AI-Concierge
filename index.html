@@ -40,7 +40,7 @@
     </div>
 
 <script>
-const API_KEY = "YOUR_API_KEY_HERE";
+const API_KEY = "YOUR_API_KEY_HERE"; //Replace with your api
 const MODEL_NAME = "gemini-3.1-flash-lite-preview";
 let chatHistory = JSON.parse(sessionStorage.getItem("et_scenario_history")) || [];
 
@@ -70,6 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function getAIResponse(userMessage) {
+if (!API_KEY || API_KEY.includes("YOUR_API_KEY") || API_KEY.trim() === "") {
+        addMessage("⚠️ **Setup Required:** Please insert a valid Gemini API Key in the code to start the concierge.", "bot");
+        return;
+    }
     let loadingMsg = addMessage("Agent analyzing context...", "bot", false);
     chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
 
