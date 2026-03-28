@@ -40,7 +40,13 @@
     </div>
 
 <script>
-const API_KEY = "YOUR_API_KEY_HERE"; //Replace with your api
+if (!API_KEY || API_KEY === "YOUR_API_KEY_HERE" || API_KEY.trim() === "") {
+        const providedKey = prompt("Welcome to the ET AI Concierge! 🚀\n\nPlease enter a Gemini API Key to start:");
+        if (providedKey) {
+            API_KEY = providedKey;
+            sessionStorage.setItem("ET_ACCESS_KEY", providedKey);
+        }
+    }
 const MODEL_NAME = "gemini-3.1-flash-lite-preview";
 let chatHistory = JSON.parse(sessionStorage.getItem("et_scenario_history")) || [];
 
