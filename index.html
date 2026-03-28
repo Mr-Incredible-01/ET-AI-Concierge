@@ -40,6 +40,8 @@
     </div>
 
 <script>
+    
+let API_KEY = sessionStorage.getItem("ET_ACCESS_KEY") || "";
 if (!API_KEY || API_KEY === "YOUR_API_KEY_HERE" || API_KEY.trim() === "") {
         const providedKey = prompt("Welcome to the ET AI Concierge! 🚀\n\nPlease enter a Gemini API Key to start:");
         if (providedKey) {
